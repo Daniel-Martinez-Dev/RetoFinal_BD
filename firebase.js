@@ -1,19 +1,21 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/9.13.0/firebase-app.js";
-
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.2/firebase-app.js";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
 import {
-    getFirestore,
-    collection,
-    getDocs,
-    onSnapshot,
-    addDoc,
-    deleteDoc,
-    doc,
-    getDoc,
-    updateDoc,
+  getFirestore,
+  collection,
+  getDocs,
+  onSnapshot,
+  addDoc,
+  deleteDoc,
+  doc,
+  getDoc,
+  updateDoc,
 } from "https://www.gstatic.com/firebasejs/9.6.2/firebase-firestore.js";
 
-  // Your web app's Firebase configuration
-  const firebaseConfig = {
+// Your web app's Firebase configuration
+const firebaseConfig = {
     apiKey: "AIzaSyAV9OMmHavHYoU6joAeyRSoFxybWqcW3so",
     authDomain: "retofinaldb.firebaseapp.com",
     projectId: "retofinaldb",
@@ -22,72 +24,43 @@ import {
     appId: "1:128583622015:web:ded5346da530798e290e4a"
   };
 
-  // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
+// Initialize Firebase
+export const app = initializeApp(firebaseConfig);
 
 export const db = getFirestore();
 
+//--------------------------------------------ESTUDIANTE------------------------------------------------------------------------
 
-// CLASES
-/**
- * Save a New Class in Firestore
- * @param {string} Asignatura_nombre the title of the Task
- * @param {string} Asignatura_Descripción the description of the Task
- */
+export const saveEstudiante = (nombre,apellido) => addDoc(collection(db, "Estudiantes"), {nombre,apellido });
 
-export const saveClase = (Asignatura_nombre, Asignatura_Descripción) => 
-        addDoc(collection(db, "Clase"), { Asignatura_nombre, Asignatura_Descripción });
+export const onGetEstudiantes = (callback) => onSnapshot(collection(db, "Estudiantes"), callback);
 
-export const onGetClases = (callback) => 
-        onSnapshot(collection(db, "Clase"), callback);
+export const deleteEstudiante = (id) => deleteDoc(doc(db, "Estudiantes", id));
 
+export const getEstudiante = (id) => getDoc(doc(db, "Estudiantes", id));
 
-//Estudiante
-export const saveEstudiante = (Estudiante_nombres, Estudiante_apellidos) => 
-        addDoc(collection(db, "Estudiante"), { Estudiante_nombres, Estudiante_apellidos });
+export const updateEstudiante = (id, newFields) => updateDoc(doc(db, "Estudiantes", id), newFields);
 
-export const onGetEstudiantes = (callback) => 
-        onSnapshot(collection(db, "Estudiante"), callback);
+//--------------------------------------------CLASE------------------------------------------------------------------------
 
-/**
- *
- * @param {string} id Task ID
- * @param {string} id Task ID
- */
+export const saveClase = (titulo, descripcion) => addDoc(collection(db, "Clases"), { titulo, descripcion });
 
-// CLASES
-export const deleteClase = (id) => 
-    deleteDoc(doc(db, "Clase", id));
+export const onGetClases = (callback) => onSnapshot(collection(db, "Clases"), callback);
 
-export const getClase = (id) => 
-    getDoc(doc(db, "Clase", id));
+export const deleteClase = (id) => deleteDoc(doc(db, "Clases", id));
 
-export const updateClase = (id, newFields) => 
-    updateDoc(doc(db, "Clase", id), newFields);
+export const getClase = (id) => getDoc(doc(db, "Clases", id));
 
-export const getClases = () => 
-    getDocs(collection(db, "Clase"));
+export const updateClase = (id, newFields) => updateDoc(doc(db, "Clases", id), newFields);
 
+//--------------------------------------------MATRICULA------------------------------------------------------------------------
 
-//Estudiante
-export const deleteEstudiante = (id) => 
-    deleteDoc(doc(db, "Estudiante", id));
+export const saveMatricula = (Id_estudiante, Id_clase) => addDoc(collection(db, "Matriculas"), { Id_estudiante, Id_clase });
 
-export const getEstudiante = (id) => 
-    getDoc(doc(db, "Estudiante", id));
+export const onGetMatriculas = (callback) => onSnapshot(collection(db, "Matriculas"), callback);
 
-export const updateEstudiante = (id, newFields) => 
-    updateDoc(doc(db, "Estudiante", id), newFields);
+export const deleteMatricula = (id) => deleteDoc(doc(db, "Matriculas", id));
 
-export const getEstudiantes = () => 
-    getDocs(collection(db, "Estudiante"));
+export const getMatricula = (id) => getDoc(doc(db, "Matriculas", id));
 
-//MATRICULAS
-export const saveEnrollment = (Id_estudiante, Id_clase) => 
-    addDoc(collection(db, "Matriculas"), { Id_estudiante, Id_clase });
-
-export const onGetEnrollments = (callback) => 
-    onSnapshot(collection(db, "Matriculas"), callback);
-
-export const deleteEnrollment = (id) => 
-    deleteDoc(doc(db, "Matriculas", id));
+export const updateMatricula = (id, newFields) => updateDoc(doc(db, "Matriculas", id), newFields);

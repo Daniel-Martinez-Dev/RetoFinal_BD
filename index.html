@@ -1,42 +1,117 @@
-!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Firebase CRUD</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/cyborg/bootstrap.min.css">
-</head>
 
-<body class="bg-dark">
+    <!-- BOOTSWATCH -->
+    <link
+      rel="stylesheet"
+      href="https://bootswatch.com/5/yeti/bootstrap.min.css"
+    />
+  </head>
+
+  <body class="bg-dark">
     <!-- ADD TASK -->
-    <div class="container p-4">
+    <div class="container pt-4 pl-2 pr-2">
         <div class="row">
             <div class="col-md-6">
-                <div class="card text-white">
+                <div class="card">
                     <div class="card-body">
-                        <form id="matriculas-form">
-                            <h1 class="h4">Estudiante</h1>
-                            <label for="title">Estudiante:</label>
-                            <input type="text" id="Estudiante_documento" class="form-control mb-3" class="Estudiante_documento" placeholder="Documento" autofocus />
-                            <input type="text" id="Estudiante_nombres" class="form-control mb-3" class="Estudiante_nombres" placeholder="Nombres" />
-                            <input type="text" id="Estudiante_apellidos" class="form-control mb-3" class="Estudiante_apellidos" placeholder="Apellidos" />
-                            <h1 class="h4">Asignatura</h1>
-                            <label for="title">Asignatura:</label>
-                            <input type="text" id="Asignatura_curso" class="form-control mb-3" class="Asignatura_curso" placeholder="Curso" />
-                            <input type="text" id="Asignatura_nombre" class="form-control mb-3" class="Asignatura_nombre" placeholder="Nombre Asignatura" />
-                            <textarea id="Asignatura_Descripción" rows="3" class="form-control mb-3" placeholder="Descripción de la asignatura"></textarea>
-                            <button class="btn btn-primary" id="btn-matriculas-form">Guardar</button>
+                        <h1 class="h4">Estudiante</h1>
+    
+                        <form id="estudiantes-form">
+                            <label for="student-name">Nombre:</label>
+                            <input
+                                    type="text"
+                                    id="student-name"
+                                    class="form-control mb-3"
+                                    placeholder="Escribe los nombres del estudiante"
+                                    autofocus
+                            />
+    
+                            <label for="student-last-name">Apellido:</label>
+                            <input
+                                    type="text"
+                                    id="student-last-name"
+                                    class="form-control mb-3"
+                                    placeholder="Escribe los apellidos del estudiante"
+                                    autofocus
+                            />
+    
+                            <button class="btn btn-primary" id="btn-students-form">Guardar</button>
                         </form>
                     </div>
                 </div>
+                <div id="estudiantes-container"></div>
             </div>
-            <!-- Tasks List -->
-            <div class="col-md-6" id="matriculas-container"></div>
+    
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h1 class="h4">Clase</h1>
+    
+                        <form id="clases-form">
+                            <label for="clases-title">Título:</label>
+                            <input
+                                    type="text"
+                                    id="clases-title"
+                                    class="form-control mb-3"
+                                    class="My First Title"
+                                    placeholder="Título de la clase"
+                                    autofocus
+                            />
+    
+                            <label for="clases-description">Descripción:</label>
+                            <textarea
+                                    id="clases-description"
+                                    rows="3"
+                                    class="form-control mb-3"
+                                    placeholder="Descripción de la clase"
+                            ></textarea>
+    
+    
+                            <button class="btn btn-primary" id="btn-clases-form">Guardar</button>
+                        </form>
+                    </div>
+                </div>
+                <div id="clases-container"></div>
+            </div>
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h1 class="h4">Matricular</h1>
+    
+                        <form id="matriculas-form">
+                            <label for="id-estudiante">ID Estudiante:</label>
+                            <input
+                                    type="text"
+                                    id="id-estudiante"
+                                    class="form-control mb-3"
+                                    placeholder="Id del estudiante a matricular"
+                                    autofocus
+                            />
+    
+                            <label for="id-clase">ID Clase:</label>
+                            <input
+                                    type="text"
+                                    id="id-clase"
+                                    class="form-control mb-3"
+                                    placeholder="Id de la clase a matricular"
+                            ></input>
+    
+    
+                            <button class="btn btn-primary" id="btn-matricula-form">Matricular</button>
+                        </form>
+                    </div>
+                </div>
+                <div id="matriculas-container"></div>
+            </div>
         </div>
     </div>
+    
     <script src="./index.js" type="module"></script>
+    
 </body>
-
 </html>
